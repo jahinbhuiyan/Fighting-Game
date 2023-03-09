@@ -12,14 +12,14 @@ JavaScript, Canvas
 
 ## Work Schedule ##
 
-Thursday - Final Proposal Submission and Research on technologies to use
-Friday - Research and find character stickers for animation
-Saturday - First day of coding. Build characters, add movement functionality
-Sunday - Work on collision detection and animations for it
-Monday - Work on health bar and timer
-Tuesday - Fix all animations and character features
-Wednesday - Final touches and edit all features
-Thursday - Submission and Presentation 
+1. Thursday - Final Proposal Submission and Research on technologies to use
+2. Friday - Research and find character stickers for animation
+3. Saturday - First day of coding. Build characters, add movement functionality
+4. Sunday - Work on collision detection and animations for it
+5. Monday - Work on health bar and timer
+6. Tuesday - Fix all animations and character features
+7. Wednesday - Final touches and edit all features
+8. Thursday - Submission and Presentation 
 
 
 ## Future Features ##
