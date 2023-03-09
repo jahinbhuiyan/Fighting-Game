@@ -4,3 +4,12 @@ Fight game is a player vs computer game, where the user can take control of a ch
 
 
 ![alt text](screenshot.png)
+
+
+## Technologies Used ##
+JavaScript, Canvas
+
+
+## Future Features ##
+
+In the future I want to add the ability to choose between multiple characters. I will also add more characteristics to  the user character: the character will have the ability to duck down to dodge an attack, after landing a certain number of strikes on the opponent the character will have the option to power up where they can use a special move to cause more damage to the opponent. I will also add health regenerate feature where the character's health slowly starts to regenerate if they haven't bit hit with a strike for a certain period of time. I will also add a leaderboard and I want to add multiple levels of difficulty to the game.
