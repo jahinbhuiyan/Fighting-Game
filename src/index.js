@@ -64,3 +64,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
+/// add swith case for every direction; add end limit for every direction; i.e, collision detection///
