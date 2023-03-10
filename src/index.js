@@ -68,3 +68,4 @@ document.addEventListener("DOMContentLoaded", () => {
 //work plan//
 /// add swith case for every direction; add end limit for every direction; i.e, collision detection///
 // restrict number of jump for a suer to three//
+// work on adding sprites//
