@@ -3,12 +3,15 @@ const gravity = 0.2;
 
 export default class Sprite {
     
+
+    // add canvas and context as arguments for constructor as they were created in a different class file//
+
     constructor(canvas, context, {position, velocity}) {
         this.canvas = canvas;
         this.context = context;
         this.position = position;
         this.velocity = velocity;
-        this.height = 150;
+        this.height = 150; /// assigned ranomd height
     }
 
     draw(){
@@ -28,9 +31,9 @@ export default class Sprite {
         this.position.y += this.velocity.y;
 
         if(this.position.y + this.height + this.velocity.y >= this.canvas.height){
-            this.velocity.y = 0;
+            this.velocity.y = 0; //stopping movement when the user chareacter is >= canvas height(boundary wall)
         } else{
-            this.velocity.y += gravity;
+            this.velocity.y += gravity;  // adding gravity prevents the characters from leaving the screen
         }
     }
 }

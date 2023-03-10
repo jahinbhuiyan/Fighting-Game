@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    const player = new Sprite(canvas,context, {
+    const player = new Sprite(canvas,context, {    // creating the position and velocity as a key: value pair
         position:{
             x: 0, 
             y: 0
@@ -43,9 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
     
     function movement(){
-        context.fillStyle = "black";
+        context.fillStyle = "black";  // this is done so that when we call movement the color of the canvas doesn't turn red bcs of 
+        // this.context.fillStyle = "red" in draw() method
         context.fillRect(0,0, canvas.width, canvas.height)
-        window.requestAnimationFrame(movement)
+        window.requestAnimationFrame(movement) // this calls movement function on an endless loop
         player.update();
         enemy.update();
     
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     movement();
 
 
-    window.addEventListener('keydown', (event) =>{
+    window.addEventListener('keydown', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console
         switch(event.key){
             case 'd': 
             player.velocity.x = 1
@@ -65,10 +66,5 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 
-//work plan//
-/// add swith case for every direction; add end limit for every direction; i.e, collision detection///
-// restrict number of jump for a suer to three//
-// work on adding sprites//
-// work on sprites collision detection//
-// add computer AI functionality"
+
 
