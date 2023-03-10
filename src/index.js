@@ -70,3 +70,5 @@ document.addEventListener("DOMContentLoaded", () => {
 // restrict number of jump for a suer to three//
 // work on adding sprites//
 // work on sprites collision detection//
+// add computer AI functionality"
+
