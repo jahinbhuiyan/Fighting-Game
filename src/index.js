@@ -64,6 +64,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
-//
-//
-//
