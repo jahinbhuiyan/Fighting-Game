@@ -40,7 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    
+    const keys = {
+        a: {
+            pressed: false
+        },
+        d: {
+            pressed: false
+        }
+    }
+    let lastKey;
     
     function movement(){
         context.fillStyle = "black";  // this is done so that when we call movement the color of the canvas doesn't turn red bcs of 
@@ -49,6 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
         window.requestAnimationFrame(movement) // this calls movement function on an endless loop
         player.update();
         enemy.update();
+        
+        player.velocity.x = 0;
+        if(keys.a.pressed && lastKey === 'a'){
+            player.velocity.x = -1
+        }else if(keys.d.pressed && lastKey === 'd'){
+            player.velocity.x = 1
+        }
     
     }
     movement();
@@ -57,9 +72,30 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('keydown', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console
         switch(event.key){
             case 'd': 
-            player.velocity.x = 1
+            keys.d.pressed = true
+            lastKey = 'd';
+            break
+            case 'a': 
+            keys.a.pressed = true
+            lastKey = 'a';
             break
         }
+
+
+        console.log(event.key);
+    })
+
+    window.addEventListener('keyup', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console
+        switch(event.key){
+            case 'd': 
+            keys.d.pressed = false
+            break
+            case 'a': 
+            keys.a.pressed = false
+            break
+        }
+
+        
         console.log(event.key);
     })
 
