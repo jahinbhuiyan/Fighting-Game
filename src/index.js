@@ -1,4 +1,4 @@
-import Sprite from "./scripts/sprite"
+import Character from "./scripts/character"
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    const player = new Sprite(canvas,context, {    // creating the position and velocity as a key: value pair
+    const player = new Character(canvas,context, {    // creating the position and velocity as a key: value pair
         position:{
             x: 0, 
             y: 0
@@ -22,14 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
         velocity:{
             x: 0,
             y:0
-        }
+        },
+        color: 'green'
     });
+    console.log(player)
 
     
 
     
     
-    const enemy = new Sprite(canvas, context, {
+    const enemy = new Character(canvas, context, {
         position:{
             x: 400, 
             y: 100
@@ -37,7 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
         velocity:{
             x: 0,
             y:0
-        }
+        },
+        color: 'blue'
+        
     });
 
     const keys = {
@@ -45,6 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
             pressed: false
         },
         d: {
+            pressed: false
+        },
+        w:{
             pressed: false
         }
     }
@@ -58,11 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
         player.update();
         enemy.update();
         
+        
         player.velocity.x = 0;
         if(keys.a.pressed && lastKey === 'a'){
-            player.velocity.x = -1
+            player.velocity.x = -5
         }else if(keys.d.pressed && lastKey === 'd'){
-            player.velocity.x = 1
+            player.velocity.x = 5
+        }else if(keys.w.pressed && lastKey === 'w'){
+            player.velocity.y = -15
         }
     
     }
@@ -72,13 +82,16 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('keydown', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console
         switch(event.key){
             case 'd': 
-            keys.d.pressed = true
-            lastKey = 'd';
+                keys.d.pressed = true
+                lastKey = 'd';
             break
             case 'a': 
-            keys.a.pressed = true
-            lastKey = 'a';
+                keys.a.pressed = true
+                lastKey = 'a';
             break
+            case 'w':
+                keys.w.pressed = true
+                lastKey = 'w';    
         }
 
 
@@ -88,11 +101,13 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('keyup', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console
         switch(event.key){
             case 'd': 
-            keys.d.pressed = false
+                keys.d.pressed = false
             break
             case 'a': 
-            keys.a.pressed = false
+                keys.a.pressed = false
             break
+            case 'w':
+                keys.w.pressed = false
         }
 
         

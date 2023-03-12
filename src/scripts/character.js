@@ -1,27 +1,39 @@
 
-const gravity = 0.2;
+const gravity = 0.7;
 
-export default class Sprite {
+export default class Character {
     
 
     // add canvas and context as arguments for constructor as they were created in a different class file//
 
-    constructor(canvas, context, {position, velocity}) {
+    constructor(canvas, context,{position, velocity, color}) {
         this.canvas = canvas;
         this.context = context;
         this.position = position;
         this.velocity = velocity;
-        this.height = 150; /// assigned ranomd height
+        this.color = color;
+        
+        this.height = 150; /// assigned random height
+        this.attackRect ={
+            position: this.position,
+            width: 100,
+            height: 50
+        }
+        
     }
 
     draw(){
 
         // we defined context in DOMContentLoaded in index.js
-        // hence context will not be available in sprite.js /  sprite class;
+        // hence context will not be available in character.js /  character class;
         // that's why we have to do this.context instead
 
-        this.context.fillStyle = "red";
+        this.context.fillStyle = this.color;
         this.context.fillRect(this.position.x, this.position.y, 50, this.height);
+        this.context.fillStyle = "blue";
+        this.context.fillRect(this.attackRect.position.x, this.attackRect.position.y,
+             this.attackRect.width, this.attackRect.height)
+        
     }
 
     update(){
