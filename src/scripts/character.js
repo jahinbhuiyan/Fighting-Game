@@ -13,12 +13,17 @@ export default class Character {
         this.velocity = velocity;
         this.color = color;
         
+        this.width = 50;
         this.height = 150; /// assigned random height
         this.attackRect ={
-            position: this.position,
+            position: {
+                x: this.position.x,
+                y: this.position.y
+            },
             width: 100,
             height: 50
         }
+        this.attacking;
         
     }
 
@@ -29,15 +34,19 @@ export default class Character {
         // that's why we have to do this.context instead
 
         this.context.fillStyle = this.color;
-        this.context.fillRect(this.position.x, this.position.y, 50, this.height);
+        this.context.fillRect(this.position.x, this.position.y, this.width, this.height);
+
+        if(this.attacking){
         this.context.fillStyle = "blue";
         this.context.fillRect(this.attackRect.position.x, this.attackRect.position.y,
              this.attackRect.width, this.attackRect.height)
-        
+        }
     }
 
     update(){
         this.draw();
+        this.attackRect.position.x = this.position.x;
+        this.attackRect.position.y = this.position.y;
 
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
@@ -47,5 +56,12 @@ export default class Character {
         } else{
             this.velocity.y += gravity;  // adding gravity prevents the characters from leaving the screen
         }
+    }
+
+    attack(){
+        this.attacking = true;
+        setInterval(() => {
+            this.attacking = false;
+        }, 1000)
     }
 }

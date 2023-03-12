@@ -1,5 +1,6 @@
 import Character from "./scripts/character"
 
+
 document.addEventListener("DOMContentLoaded", () => {
     
     const canvas = document.querySelector('canvas');
@@ -74,6 +75,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }else if(keys.w.pressed && lastKey === 'w'){
             player.velocity.y = -15
         }
+
+        //collision detection
+        if(player.attackRect.position.x + player.attackRect.width >= enemy.position.x
+            && 
+            player.attackRect.position.x <= enemy.position.x + enemy.width
+            && 
+            player.attackRect.position.y + player.attackRect.height >= enemy.position.y
+            &&
+            player.attackRect.position.y <= enemy.position.y + enemy.height
+            &&
+            player.attacking){
+            player.attacking = false;
+        }
     
     }
     movement();
@@ -91,7 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
             break
             case 'w':
                 keys.w.pressed = true
-                lastKey = 'w';    
+                lastKey = 'w'; 
+            break
+            case 'k':
+                player.attack(); 
+            break  
         }
 
 
@@ -109,8 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
             case 'w':
                 keys.w.pressed = false
         }
-
-        
         console.log(event.key);
     })
 
