@@ -6,7 +6,7 @@ export default class Character {
 
     // add canvas and context as arguments for constructor as they were created in a different class file//
 
-    constructor(canvas, context,{position, velocity, color}) {
+    constructor(canvas, context,{position, velocity, color, offset}) {
         this.canvas = canvas;
         this.context = context;
         this.position = position;
@@ -20,6 +20,7 @@ export default class Character {
                 x: this.position.x,
                 y: this.position.y
             },
+            offset,
             width: 100,
             height: 50
         }
@@ -45,11 +46,13 @@ export default class Character {
 
     update(){
         this.draw();
-        this.attackRect.position.x = this.position.x;
-        this.attackRect.position.y = this.position.y;
-
-        this.position.x += this.velocity.x;
+        this.attackRect.position.x = this.position.x + this.attackRect.offset.x;
+        this.attackRect.position.y = this.position.y
+        
+        // this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
+        // this.velocity.x = 0;
+
 
         if(this.position.y + this.height + this.velocity.y >= this.canvas.height){
             this.velocity.y = 0; //stopping movement when the user chareacter is >= canvas height(boundary wall)
@@ -64,4 +67,6 @@ export default class Character {
             this.attacking = false;
         }, 1000)
     }
+
+    
 }

@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
             x: 0,
             y:0
         },
-        color: 'green'
+        color: 'green',
+
+        offset:{
+            x:0,
+            y:0
+        }
     });
     console.log(player)
 
@@ -41,7 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
             x: 0,
             y:0
         },
-        color: 'blue'
+        color: 'blue',
+        offset:{
+            x:-50,
+            y:0
+        }
         
     });
 
@@ -56,7 +65,19 @@ document.addEventListener("DOMContentLoaded", () => {
             pressed: false
         }
     }
-    let lastKey;
+    // let lastKey;
+
+    function attackCollision(player1, player2){
+        return(
+            player1.attackRect.position.x + player1.attackRect.width >= player2.position.x
+            && 
+            player1.attackRect.position.x <= player2.position.x + player2.width
+            && 
+            player1.attackRect.position.y + player1.attackRect.height >= player2.position.y
+            &&
+            player1.attackRect.position.y <= player2.position.y + player2.height
+        )
+    }
     
     function movement(){
         context.fillStyle = "black";  // this is done so that when we call movement the color of the canvas doesn't turn red bcs of 
@@ -67,25 +88,23 @@ document.addEventListener("DOMContentLoaded", () => {
         enemy.update();
         
         
-        player.velocity.x = 0;
-        if(keys.a.pressed && lastKey === 'a'){
-            player.velocity.x = -5
-        }else if(keys.d.pressed && lastKey === 'd'){
-            player.velocity.x = 5
-        }else if(keys.w.pressed && lastKey === 'w'){
-            player.velocity.y = -15
-        }
+        // player.velocity.x = 0;
+        // if(keys.a.pressed && lastKey === 'a'){
+        //     player.velocity.x = -5
+        // }else if(keys.d.pressed && lastKey === 'd'){
+        //     player.velocity.x = 5
+        // }else if(keys.w.pressed && lastKey === 'w'){
+        //     player.velocity.y = -15
+        // }
 
         //collision detection
-        if(player.attackRect.position.x + player.attackRect.width >= enemy.position.x
-            && 
-            player.attackRect.position.x <= enemy.position.x + enemy.width
-            && 
-            player.attackRect.position.y + player.attackRect.height >= enemy.position.y
-            &&
-            player.attackRect.position.y <= enemy.position.y + enemy.height
+        if( attackCollision(
+            player,
+            enemy
+        )
             &&
             player.attacking){
+            console.log('go');
             player.attacking = false;
         }
     
@@ -97,15 +116,18 @@ document.addEventListener("DOMContentLoaded", () => {
         switch(event.key){
             case 'd': 
                 keys.d.pressed = true
-                lastKey = 'd';
+                player.position.x += 15;
+                // lastKey = 'd';
             break
             case 'a': 
                 keys.a.pressed = true
-                lastKey = 'a';
+                player.position.x += -15;
+                // lastKey = 'a';
             break
             case 'w':
                 keys.w.pressed = true
-                lastKey = 'w'; 
+                player.position.y += -100;
+                // lastKey = 'w'; 
             break
             case 'k':
                 player.attack(); 
