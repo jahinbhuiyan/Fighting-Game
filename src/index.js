@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pressed: false
         }
     }
-    // let lastKey;
+    let lastKey;
 
     function attackCollision(player1, player2){
         return(
@@ -88,14 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
         enemy.update();
         
         
-        // player.velocity.x = 0;
-        // if(keys.a.pressed && lastKey === 'a'){
-        //     player.velocity.x = -5
-        // }else if(keys.d.pressed && lastKey === 'd'){
-        //     player.velocity.x = 5
-        // }else if(keys.w.pressed && lastKey === 'w'){
-        //     player.velocity.y = -15
-        // }
+        player.velocity.x = 0;
+        if(keys.a.pressed ){
+            player.velocity.x = -5
+        }else if(keys.d.pressed ){
+            player.velocity.x = 5
+        }else if(keys.w.pressed ){
+            player.velocity.y = -15
+        }
 
         //collision detection
         if( attackCollision(
@@ -116,18 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
         switch(event.key){
             case 'd': 
                 keys.d.pressed = true
-                player.position.x += 15;
-                // lastKey = 'd';
             break
             case 'a': 
                 keys.a.pressed = true
-                player.position.x += -15;
-                // lastKey = 'a';
             break
             case 'w':
                 keys.w.pressed = true
-                player.position.y += -100;
-                // lastKey = 'w'; 
             break
             case 'k':
                 player.attack(); 
@@ -148,8 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
             break
             case 'w':
                 keys.w.pressed = false
+                console.log("released",event.key);
         }
-        console.log(event.key);
+        
     })
 
 })

@@ -49,16 +49,18 @@ export default class Character {
         this.attackRect.position.x = this.position.x + this.attackRect.offset.x;
         this.attackRect.position.y = this.position.y
         
-        // this.position.x += this.velocity.x;
+        this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
-        // this.velocity.x = 0;
+        this.velocity.x = 0;
 
-
+        
         if(this.position.y + this.height + this.velocity.y >= this.canvas.height){
             this.velocity.y = 0; //stopping movement when the user chareacter is >= canvas height(boundary wall)
-        } else{
+         } 
+         else{
             this.velocity.y += gravity;  // adding gravity prevents the characters from leaving the screen
         }
+        
     }
 
     attack(){
