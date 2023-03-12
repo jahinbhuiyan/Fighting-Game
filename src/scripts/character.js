@@ -7,15 +7,16 @@ export default class Character {
     // add canvas and context as arguments for constructor as they were created in a different class file//
 
     constructor(canvas, context,{position, velocity, color, offset}) {
-        this.canvas = canvas;
-        this.context = context;
-        this.position = position;
-        this.velocity = velocity;
+        this.canvas = canvas; // creating the frame
+        this.context = context; // this is where we attatch our programatic logic
+        this.position = position;  // position of character. Contains x, y
+        this.velocity = velocity; // velocity of character. Contains x, y. Only use is to be added to position(change position)
         this.color = color;
         
-        this.width = 50;
-        this.height = 150; /// assigned random height
-        this.attackRect ={
+        this.width = 50;  // width of my character box. Incrases widht towards right
+        this.height = 150; /// height of my character box. Increases height towards bottom
+
+        this.attackRect ={ 
             position: {
                 x: this.position.x,
                 y: this.position.y
@@ -45,14 +46,22 @@ export default class Character {
     }
 
     update(){
-        this.draw();
+        // this is not the update for the entire fram. this just updates the specific character.
+        // update gets called every unit of timein movement();
+        this.draw(); 
         this.attackRect.position.x = this.position.x + this.attackRect.offset.x;
         this.attackRect.position.y = this.position.y
         
+        
         this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-        this.velocity.x = 0;
+        // if character position becomes < 0, this means it's in the ceiling. stop code from reducing the value 
+        //of y anymore
+        if(this.position.y < 0){ 
 
+            this.velocity.y = gravity; // gravity is what brings it back down from the ceiling
+        }
+        this.position.y += this.velocity.y;
+        
         
         if(this.position.y + this.height + this.velocity.y >= this.canvas.height){
             this.velocity.y = 0; //stopping movement when the user chareacter is >= canvas height(boundary wall)

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const player = new Character(canvas,context, {    // creating the position and velocity as a key: value pair
         position:{
             x: 0, 
-            y: 0
+            y: 150 // so that we start at the bottom of the frame
         },
         velocity:{
             x: 0,
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pressed: false
         }
     }
-    let lastKey;
+   
 
     function attackCollision(player1, player2){
         return(
@@ -94,7 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }else if(keys.d.pressed ){
             player.velocity.x = 5
         }else if(keys.w.pressed ){
-            player.velocity.y = -15
+            // if(player.position.y > 0){
+                player.velocity.y = -10
+            // }
         }
 
         //collision detection
@@ -115,7 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('keydown', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console
         switch(event.key){
             case 'd': 
-                keys.d.pressed = true
+                keys.d.pressed = true // when i press d movement function picks it up bcs it is running 
+                // every unit of time. 
             break
             case 'a': 
                 keys.a.pressed = true
@@ -135,7 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('keyup', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console
         switch(event.key){
             case 'd': 
-                keys.d.pressed = false
+                keys.d.pressed = false // when i release d, movement functuin picks it up bcs it's running
+                // every unit of time
             break
             case 'a': 
                 keys.a.pressed = false
