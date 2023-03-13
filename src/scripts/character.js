@@ -1,15 +1,20 @@
+import Sprite from "./sprite";
 
 const gravity = 0.7;
 
-export default class Character {
+export default class  Character extends Sprite  {
     
 
     // add canvas and context as arguments for constructor as they were created in a different class file//
 
-    constructor(canvas, context,{position, velocity, color, offset}) {
+    constructor(canvas, context,{position, velocity, color, offset, imageSrc, scale = 1, framesMax = 1,}) {
+        
+        super(canvas, context,{
+             position, imageSrc, scale, framesMax
+        })
         this.canvas = canvas; // creating the frame
         this.context = context; // this is where we attatch our programatic logic
-        this.position = position;  // position of character. Contains x, y
+        // this.position = position;  // position of character. Contains x, y
         this.velocity = velocity; // velocity of character. Contains x, y. Only use is to be added to position(change position)
         this.color = color;
         
@@ -27,24 +32,12 @@ export default class Character {
         }
         this.attacking;
         this.health = 100;
+        this.frameCurrent = 0
+        this.framesElasped = 0
+        this.framesHold = 10
         
     }
 
-    draw(){
-
-        // we defined context in DOMContentLoaded in index.js
-        // hence context will not be available in character.js /  character class;
-        // that's why we have to do this.context instead
-
-        this.context.fillStyle = this.color;
-        this.context.fillRect(this.position.x, this.position.y, this.width, this.height);
-
-        if(this.attacking){
-        this.context.fillStyle = "blue";
-        this.context.fillRect(this.attackRect.position.x, this.attackRect.position.y,
-             this.attackRect.width, this.attackRect.height)
-        }
-    }
 
     update(){
         // this is not the update for the entire fram. this just updates the specific character.

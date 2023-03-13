@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     context.fillRect(0, 0, canvas.width, canvas.height)
 
     // creatae a new player
-
+    
     const player = new Character(canvas,context, {    // creating the position and velocity as a key: value pair
         position:{
             x: 0, 
@@ -28,8 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
         offset:{
             x:0,
             y:0
-        }
+        },
+        imageSrc: '../assets/Knight/Sprites/Idle.png',
+        framesMax: 8
+
     });
+    //debugger
     console.log(player)
 
     
@@ -52,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
     });
-
+    
     const background = new Sprite(canvas, context, {
         position: {
             x: 0,
@@ -73,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pressed: false
         }
     }
-   
+   //debugger
 
     function attackCollision(player1, player2){
         return(
@@ -103,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector('#textresult').style.display = 'flex'; 
         }
     }
-    
+    //debugger
     let timer = 45;
     let timerId;
     function countdown()  {
@@ -119,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     countdown();
-
+    
     function movement(){
         context.fillStyle = "black";  // this is done so that when we call movement the color of the canvas doesn't turn red bcs of 
         // this.context.fillStyle = "red" in draw() method
@@ -171,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     }
     movement();
-
+    //debugger
 
     window.addEventListener('keydown', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console
         switch(event.key){
@@ -211,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
 })
-
+//debugger
 
 
 
