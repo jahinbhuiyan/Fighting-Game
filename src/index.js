@@ -106,8 +106,20 @@ document.addEventListener("DOMContentLoaded", () => {
         )
             &&
             player.attacking){
-            console.log('go');
-            player.attacking = false;
+                player.attacking = false;
+                enemy.health -= 20;
+                document.querySelector('#enemyHealth').style.width = enemy.health + '%';
+        }
+
+        if( attackCollision(
+            enemy,
+            player
+        )
+            &&
+            enemy.attacking){
+                enemy.attacking = false;
+                player.health -= 20;
+                document.querySelector('#playerHealth').style.width = player.health + '%';
         }
     
     }

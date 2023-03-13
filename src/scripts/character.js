@@ -26,6 +26,7 @@ export default class Character {
             height: 50
         }
         this.attacking;
+        this.health = 100;
         
     }
 

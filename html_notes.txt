@@ -22,7 +22,16 @@ just set the scope to 100% width
 
 9. Set the timer div to flex-shrink: 0 so that the parent div's flex property doesn't affect it's height/width
 
-10. Set parent div to align-items: center so that every child div in it gets centeredf 
+10. Set parent div to align-items: center so that every child div in it gets centered
+
+11. Right now, the parent div with a position relative is taking up the full width of the window, so the health bar extends beyond the canvas width.
+We don't want that. So, we will add display: inline-block; so it will make sure that this div has the width of the children(canvas) inside it;
+
+12.In our header we add css styling element box-sizing. We apply it to everything (by using *); Border box will ensure that padding is 
+counted when we get the total width;
+
+13. We add {top: 0; right: 0; bottom: 0; left: 0;} to our dive so that when the health bar takes a hit there is still a remaining
+trace of the original healthbar
 
 
 
