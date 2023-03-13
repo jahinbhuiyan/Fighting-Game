@@ -1,4 +1,5 @@
 import Character from "./scripts/character"
+import Sprite from "./scripts/sprite"
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,8 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     context.fillRect(0, 0, canvas.width, canvas.height)
 
     // creatae a new player
-
-
 
     const player = new Character(canvas,context, {    // creating the position and velocity as a key: value pair
         position:{
@@ -54,6 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
         
     });
 
+    const background = new Sprite(canvas, context, {
+        position: {
+            x: 0,
+            y: 0
+        },
+        imageSrc: '../assets/game_background_3/background.png'
+        
+    })
+
     const keys = {
         a: {
             pressed: false
@@ -78,12 +86,46 @@ document.addEventListener("DOMContentLoaded", () => {
             player1.attackRect.position.y <= player2.position.y + player2.height
         )
     }
+
+    function endgameFunc({player, enemy, timerId}){
+        
+        clearTimeout(timerId);
+
+        document.querySelector('#textresult').style.display = 'flex'; 
+        if(player.health === enemy.health){
+            document.querySelector('#textresult').innerHTML = 'Tie'
+            document.querySelector('#textresult').style.display = 'flex'; 
+        }else if(player.health > enemy.health){
+            document.querySelector('#textresult').innerHTML = 'PLAYER 1 WINS'
+            document.querySelector('#textresult').style.display = 'flex'; 
+        }else if(enemy.health > player.health){
+            document.querySelector('#textresult').innerHTML = 'PLAYER 2 WINS'
+            document.querySelector('#textresult').style.display = 'flex'; 
+        }
+    }
     
+    let timer = 45;
+    let timerId;
+    function countdown()  {
+        if(timer > 0){
+        timerId = setTimeout(countdown, 1000)   // set interval allows multiple execution of code in set interval; setTimeout allows one execution
+            timer -- ;
+            document.querySelector("#timer").innerHTML = timer;
+        }
+        if(timer === 0){
+            document.querySelector('#textresult').style.display = 'flex'; 
+            endgameFunc({player, enemy});
+        }   
+    }
+
+    countdown();
+
     function movement(){
         context.fillStyle = "black";  // this is done so that when we call movement the color of the canvas doesn't turn red bcs of 
         // this.context.fillStyle = "red" in draw() method
         context.fillRect(0,0, canvas.width, canvas.height)
         window.requestAnimationFrame(movement) // this calls movement function on an endless loop
+        background.update();
         player.update();
         enemy.update();
         
@@ -120,6 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 enemy.attacking = false;
                 player.health -= 20;
                 document.querySelector('#playerHealth').style.width = player.health + '%';
+        }
+
+        // end game logic
+        if(enemy.health <= 0 || player.health <=0 ){
+            endgameFunc({player, enemy, timerId});
         }
     
     }
