@@ -6,16 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
     <title>Fight Game</title>
   </head>
+  <div id="main"></div>
 
   <body>
-    <div id="main"></div>
+    <div style="position: relative;">
+      
+      <div style="position: absolute; display: flex; width: 100%; align-items: center;">
+       
+        <div style="background-color: yellow; height: 30px; width: 100%;"></div>
+       
+        <div style="background-color:red; width:100px; height:100px; flex-shrink: 0;"></div>
+
+        <div style="background-color: yellow; height: 30px; width: 100%;"></div>
+       
+        <div></div>
+      </div>
+      <script src="./dist/main.js"></script>
+    <canvas style="width:100%;"></canvas>
     
-    <canvas></canvas>
-    
-    
+  </div>
   
   </body>
 

@@ -1,0 +1,28 @@
+1. add canvas element
+
+2. put canvas in the body
+
+3. put the canvas inside a div (this turns the entire canvas into a div)
+4. the parent div is the whole canvas
+
+5. Set the style of parent div to position relative; CSS property creates a new positioning context for a positioned element. 
+This means that the element is positioned relative to its original position on the page, and not relative to the position of
+any other elements on the page. When an element has a position: relative; property, you can use the top, bottom, left, and 
+right CSS properties to move the element relative to its original position.
+
+6. set the first child div to position absolute; this will take it out of the document flaw. This means, the width and height of this
+div won't affect any others
+
+7. divs originally have a display:block; that means they appear on top/underneath each other; so for our purposes we wan't to make it
+a display:flex so that we can get them to appear side by side. We have to put the flex in the parent div. A parent div with flex affects
+all child div
+
+8. Set the width of the parent div to 100% so it takes up the full width of the canvas; it won't reflect any visual change yet but this 
+just set the scope to 100% width
+
+9. Set the timer div to flex-shrink: 0 so that the parent div's flex property doesn't affect it's height/width
+
+10. Set parent div to align-items: center so that every child div in it gets centeredf 
+
+
+
