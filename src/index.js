@@ -29,7 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
             x:0,
             y:0
         },
-        imageSrc: 'assets/Knight/Sprites/Idle.png'
+        imageSrc: 'assets/Knight/Sprites/Idle.png',
+        framesMax: 11,
+        scale: 2.5,
+        offset: {
+            x: 180,
+            y: 140
+        }
     });
     console.log(player)
 

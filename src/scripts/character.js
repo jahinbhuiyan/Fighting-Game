@@ -13,10 +13,12 @@ export default class Character extends Sprite {
         {position, 
         velocity, 
         color, 
-        offset, 
+        // offset, 
         imageSrc, 
         scale = 1, 
-        framesMax = 1}) {
+        framesMax = 1,
+        offset = {x:0, y: 0}
+    }) {
 
             super(
                 canvas,
@@ -24,7 +26,8 @@ export default class Character extends Sprite {
                 position,
                 imageSrc,
                 scale,
-                framesMax
+                framesMax,
+                offset
             })
 
         this.canvas = canvas; // creating the frame
@@ -50,24 +53,11 @@ export default class Character extends Sprite {
         this.framesCurrent = 0
         this.framesElapsed = 0
         this.framesHold = 5
+        this.framesMax = framesMax;
         
     }
 
-    // draw(){
-
-    //     // we defined context in DOMContentLoaded in index.js
-    //     // hence context will not be available in character.js /  character class;
-    //     // that's why we have to do this.context instead
-
-    //     this.context.fillStyle = this.color;
-    //     this.context.fillRect(this.position.x, this.position.y, this.width, this.height);
-
-    //     if(this.attacking){
-    //     this.context.fillStyle = "blue";
-    //     this.context.fillRect(this.attackRect.position.x, this.attackRect.position.y,
-    //          this.attackRect.width, this.attackRect.height)
-    //     }
-    // }
+    
 
     update(){
         // this is not the update for the entire fram. this just updates the specific character.
