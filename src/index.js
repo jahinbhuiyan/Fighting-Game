@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
         offset:{
             x:0,
             y:0
-        }
+        },
+        imageSrc: 'assets/Knight/Sprites/Idle.png'
     });
     console.log(player)
 
@@ -49,16 +50,17 @@ document.addEventListener("DOMContentLoaded", () => {
         offset:{
             x:-50,
             y:0
-        }
+        },
+        imageSrc: 'assets/Knight/Sprites/Idle.png'
         
     });
 
     const background = new Sprite(canvas, context, {
-        position: {
+        position:{
             x: 0,
             y: 0
         },
-        imageSrc: '../assets/game_background_3/background.png'
+        imageSrc: 'assets/game_background_3/background.png'
         
     })
 

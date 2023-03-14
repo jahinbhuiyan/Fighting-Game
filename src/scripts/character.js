@@ -18,7 +18,9 @@ export default class Character extends Sprite {
         scale = 1, 
         framesMax = 1}) {
 
-            super({
+            super(
+                canvas,
+                context,{
                 position,
                 imageSrc,
                 scale,
