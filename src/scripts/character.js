@@ -17,7 +17,8 @@ export default class Character extends Sprite {
         imageSrc, 
         scale = 1, 
         framesMax = 1,
-        offset = {x:0, y: 0}
+        offset = {x:0, y: 0},
+        sprites
     }) {
 
             super(
@@ -52,8 +53,14 @@ export default class Character extends Sprite {
         this.health = 100;
         this.framesCurrent = 0
         this.framesElapsed = 0
-        this.framesHold = 5
-        this.framesMax = framesMax;
+        this.framesHold = 15  //////////////////////
+        this.framesMax = framesMax
+        this.sprites = sprites
+
+        for(const sprite in this.sprites){
+            sprites[sprite].image = new Image()
+            sprites[sprite].image.src = sprites[sprite].imageSrc
+        }
         
     }
 
@@ -62,7 +69,21 @@ export default class Character extends Sprite {
     update(){
         // this is not the update for the entire fram. this just updates the specific character.
         // update gets called every unit of timein movement();
-        this.draw(); 
+        this.draw();
+        
+        this.framesElapsed++
+
+        if(this.framesElapsed % this.framesHold === 0){
+        
+            if(this.framesCurrent < this.framesMax -1){
+                this.framesCurrent++
+            } 
+            else{
+                this.framesCurrent = 0
+            }
+    }
+
+
         this.attackRect.position.x = this.position.x + this.attackRect.offset.x;
         this.attackRect.position.y = this.position.y
         
@@ -91,6 +112,18 @@ export default class Character extends Sprite {
         setInterval(() => {
             this.attacking = false;
         }, 1000)
+    }
+
+    switchSprite(sprite){
+        switch(sprite){
+            case 'idle':
+                
+            break;
+            case 'run' :
+            break;
+            case 'jump' :
+            break;
+        }
     }
 
     

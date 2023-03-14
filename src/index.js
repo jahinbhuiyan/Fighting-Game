@@ -33,8 +33,23 @@ document.addEventListener("DOMContentLoaded", () => {
         framesMax: 11,
         scale: 2.5,
         offset: {
-            x: 180,
+            x: 160,
             y: 140
+        },
+        sprites: {
+            idle: {
+                imageSrc: 'assets/Knight/Sprites/Idle.png',
+                framesMax: 11
+            },
+            run: {
+                imageSrc: 'assets/Knight/Sprites/Run.png',
+                framesMax: 8,
+                image: new Image()
+            },
+            jump: {
+                imageSrc: 'assets/Knight/Sprites/Jump.png',
+                framesMax: 3
+            }
         }
     });
     console.log(player)
@@ -139,14 +154,26 @@ document.addEventListener("DOMContentLoaded", () => {
         
         
         player.velocity.x = 0;
+
+        player.image = player.sprites.idle.image
+        
         if(keys.a.pressed ){
             player.velocity.x = -5
+            player.image = player.sprites.run.image
+
         }else if(keys.d.pressed ){
             player.velocity.x = 5
+            player.image = player.sprites.run.image
         }else if(keys.w.pressed ){
             // if(player.position.y > 0){
                 player.velocity.y = -10
+                player.image = player.sprites.jump.image
             // }
+        }
+
+        if(player.velocity.y < 0){
+            player.image = player.sprites.jump.image
+            player.framesMax = player.sprites.jump.framesMax
         }
 
         //collision detection
