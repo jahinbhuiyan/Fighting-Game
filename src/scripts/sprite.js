@@ -50,3 +50,4 @@ export default class Sprite {
     
 }
 
+//starting player sprite
