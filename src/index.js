@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
             &&
             player.attacking){
                 player.attacking = false;
-                enemy.health -= 20;
+                enemy.health -= 5;
                 document.querySelector('#enemyHealth').style.width = enemy.health + '%';
         }
 
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
             &&
             enemy.attacking){
                 enemy.attacking = false;
-                player.health -= 20;
+                player.health -= 5;  //**************** */
                 document.querySelector('#playerHealth').style.width = player.health + '%';
         }
 
