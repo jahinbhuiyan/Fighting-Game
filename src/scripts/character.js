@@ -21,9 +21,7 @@ export default class Character extends Sprite {
         sprites
     }) {
 
-            super(
-                canvas,
-                context,{
+            super({
                 position,
                 imageSrc,
                 scale,
