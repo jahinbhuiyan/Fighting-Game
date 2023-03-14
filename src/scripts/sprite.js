@@ -10,6 +10,8 @@ export default class Sprite {
         this.scale = scale
         this.framesMax = framesMax
         this.framesCurrent = 0
+        this.framesElapsed = 0
+        this.framesHold = 5
         
         this.width = 50;  // width of my character box. Incrases widht towards right
         this.height = 150; /// height of my character box. Increases height towards bottom
@@ -32,6 +34,17 @@ export default class Sprite {
 
     update(){
         this.draw();
+        this.framesElapsed++
+
+        if(this.framesElapsed % this.framesHold === 0){
+        
+            if(this.framesCurrent < this.framesMax - 1){
+                this.framesCurrent++
+            } 
+            else{
+                this.framesCurrent = 0
+            }
+    }
     }
 
     
