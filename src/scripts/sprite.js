@@ -1,7 +1,7 @@
 export default class Sprite {
     
 
-    constructor(context, canvas, {position, imageSrc}) {
+    constructor(canvas, context, {position, imageSrc}) {
         this.canvas = canvas; // creating the frame
         this.context = context; // this is where we attatch our programatic logic
         this.position = position;  // position of character. Contains x, y
@@ -14,7 +14,7 @@ export default class Sprite {
     }
 
     draw(){
-        this.canvas.drawImage(this.image, this.position.x, this.position.y)
+        this.context.drawImage(this.image, this.position.x, this.position.y)
     }
 
     update(){
