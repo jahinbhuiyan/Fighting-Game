@@ -28,9 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
         offset:{
             x:0,
             y:0
-        },
-        imageSrc: '../assets/Knight/Sprites/Idle.png',
-        framesMax: 8
+        }
+        // ,
+        // imageSrc: 'assets/Knight/Sprites/Idle.png',
+        // framesMax: 8
 
     });
     //debugger
@@ -54,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
             x:-50,
             y:0
         }
+        // ,
+        // imageSrc: 'assets/Knight/Sprites/Idle.png',
+        // framesMax: 8
         
     });
     
@@ -62,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             x: 0,
             y: 0
         },
-        imageSrc: '../assets/game_background_3/background.png'
+        imageSrc: 'assets/game_background_3/background.png'
         
     })
 
