@@ -113,18 +113,7 @@ export default class Character extends Sprite {
             this.attacking = false;
         }, 1000)
     }
-
-    switchSprite(sprite){
-        switch(sprite){
-            case 'idle':
-                
-            break;
-            case 'run' :
-            break;
-            case 'jump' :
-            break;
-        }
-    }
+    
 
     
 }

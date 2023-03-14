@@ -49,7 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
             jump: {
                 imageSrc: 'assets/Knight/Sprites/Jump.png',
                 framesMax: 3
-            }
+            },
+            attack1: {
+                imageSrc: 'assets/Knight/Sprites/Attack1.png',
+                framesMax: 3
+            },
         }
     });
     console.log(player)
@@ -171,10 +175,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // }
         }
 
-        if(player.velocity.y < 0){
-            player.image = player.sprites.jump.image
-            player.framesMax = player.sprites.jump.framesMax
-        }
+        // if(player.velocity.y < 0){
+        //     player.image = player.sprites.jump.image
+        //     // player.framesMax = player.sprites.jump.framesMax
+        // }
 
         //collision detection
         if( attackCollision(
