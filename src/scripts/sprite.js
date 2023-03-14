@@ -1,7 +1,7 @@
 export default class Sprite {
     
 
-    constructor(canvas, context, {position, imageSrc, scale = 1, framesMax = 1}) {
+    constructor(canvas, context, {position, imageSrc, scale = 1, framesMax = 1, offset = {x:0, y:0}}) {
         this.canvas = canvas; // creating the frame
         this.context = context; // this is where we attatch our programatic logic
         this.position = position;  // position of character. Contains x, y
@@ -12,6 +12,7 @@ export default class Sprite {
         this.framesCurrent = 0
         this.framesElapsed = 0
         this.framesHold = 5
+        this.offset = offset
         
         this.width = 50;  // width of my character box. Incrases widht towards right
         this.height = 150; /// height of my character box. Increases height towards bottom
@@ -26,8 +27,8 @@ export default class Sprite {
             this.image.width/ this.framesMax,
             this.image.height,
             
-            this.position.x, 
-            this.position.y, 
+            this.position.x - this.offset.x, 
+            this.position.y - this.offset.y, 
             (this.image.width / this.framesMax) * this.scale, 
             this.image.height * this.scale
             )}

@@ -29,7 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
             x:0,
             y:0
         },
-        imageSrc: 'assets/Knight/Sprites/Idle.png'
+        imageSrc: 'assets/Knight/Sprites/Idle.png',
+        framesMax: 11,
+        scale: 2,
+        offset: {
+            x: 150,
+            y: 80
+        }
     });
     console.log(player)
 
@@ -51,7 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
             x:-50,
             y:0
         },
-        imageSrc: 'assets/Knight/Sprites/Idle.png'
+        imageSrc: 'assets/Knight/Sprites/Idle.png',
+        framesMax: 11,
+        scale: 2,
+        offset: {
+            x: 150,
+            y: 80
+        }
         
     });
 
