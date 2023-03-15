@@ -12,6 +12,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     context.fillRect(0, 0, canvas.width, canvas.height)
 
+    const onePlayer = document.getElementById('1player');
+    const twoPlayers = document.getElementById('2players');
+
+    onePlayer.addEventListener("click", () => {
+        startGame();
+    });
+    twoPlayers.addEventListener("click", () => {
+        startGame();
+    });
+
+    function startGame() {
+        document.getElementById('menu').style.display = "none"; // Hide the menu.
+        c.fillRect(0, 0, canvas.width, canvas.height);          // Simulate loading with black screen lol
+        setTimeout(() => {
+        movement();          // Start recursive animate function.
+        countdown();    // Start the timer countdown.
+        document.getElementById('hud').style.display = "flex";  // Show the hud.
+        }, 1000)    // Wait 1 sec to start the game.
+    }
+
+
+   
+
+
+
     // creatae a new player
 
     const player = new Character(canvas,context, {    // creating the position and velocity as a key: value pair
@@ -222,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }   
     }
 
-    countdown();
+    // countdown();
 
     function movement(){
         context.fillStyle = "black";  // this is done so that when we call movement the color of the canvas doesn't turn red bcs of 
@@ -296,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     
     }
-    movement();
+    // movement();
 
 
     window.addEventListener('keydown', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console

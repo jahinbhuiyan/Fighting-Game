@@ -1,4 +1,96 @@
-/*!*************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
-  \*************************************************************************************************************************************/
+@font-face {
+  font-family: 'silver';
+  src: url(../assets/fonts/Silver.ttf);
+}
 
+body {
+  box-sizing: border-box;
+  background-color: seashell
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 50px;
+}
+
+.hud {
+  position: absolute;
+  display: none;
+  width: 50%;
+  align-items: center;
+  padding: 20px;
+}
+
+.game {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#gameWindow {
+  border: 2px solid black;
+}
+.keymapping {
+  display: flex;
+  justify-content: center;
+  font-family: 'silver';
+  font-size: 40px;
+}
+
+.keys {
+  margin: 30px;
+  padding: 40px;
+  border: 2px solid black;
+}
+
+.keys h1 {
+  margin: 0px
+}
+
+.menu {
+  font-family: silver;
+  color: black;
+  position: absolute;
+  width: 1024px;
+  height: 576px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 160px;
+}
+
+.menuOption {
+  border: solid black;
+  border-width: 1px 5px 5px 1px;
+  font-size: 60px;
+  padding: 10px 20px 5px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.menuOption:hover {
+  box-shadow: inset 350px 0 0 0 #9eade9;
+  color: black;
+}
+
+.author {
+  padding-top: 10px;
+  font-size: 30px;
+  font-style: italic;
+}
+
+@keyframes textclip {
+  to {
+      background-position: 200% center;
+  }
+}

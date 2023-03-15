@@ -16,6 +16,30 @@
   <div id="main"></div>
 
   <body>
+
+   
+    
+    <div class="container">
+
+      <div id="menu" class="menu">
+
+          <div class="title; animate-charcter">
+              Fighting Game!
+          </div>
+          <div class="options">
+              <div id="1player" class="menuOption">
+                  Start Game
+              </div>
+              
+          </div>
+          <div class="author">Made by JAHIN BHUIYAN</div>
+      </div>
+
+      <div id="hud" class="hud">
+
+
+
+
     <div style="position: relative; display:inline-block;">
       
       <div style="position: absolute; display: flex; width: 100%; align-items: center; padding: 20px;">
@@ -41,12 +65,47 @@
        
           <div></div>
 
+
+
+
+
+
+          <div id="result" class="result"> result </div>
+          <div class="game">
+              <canvas id="gameWindow"> </canvas>
+          </div>
+
+
+
+
+
       </div>
       <script src="./dist/main.js"></script>
       <div id="textresult"style="position: absolute; color:white; display: none; align-items: center; justify-content: center;
       top: 0; right: 0; bottom: 0; left: 0;
       "> TIE </div>
-    <canvas></canvas>
+    <canvas id="gameWindow"></canvas>
+
+
+    <div class="information">
+      <div class="keymapping">
+          <div class="keys">
+              <h1> Player 1 </h1>
+              <p> Movement: WASD </p>
+              <p> Attack: Spacebar </p>
+          </div>
+          <div class="keys">
+              <h1> Player 2 </h1>
+              <p> Movement: Arrow keys </p>
+              <p> Attack: Alt key (right) </p>
+          </div>
+      </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+      integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="../src/index.js"> </script>
     
   </div>
   
