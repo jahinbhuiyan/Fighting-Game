@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const enemy = new Character(canvas, context, {
         position:{
-            x: 400, 
-            y: 100
+            x: 700, 
+            y: 150
         },
         velocity:{
             x: 0,
@@ -88,15 +88,15 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         color: 'blue',
         offset:{
-            x:-50,
+            x:0,
             y:0
         },
         imageSrc: 'assets/King/Sprites/Idle.png',               /////////////
         framesMax: 8,
         scale: 2.5,
         offset: {
-            x: -215,
-            y: 115
+            x: 215,
+            y: 157
         },
         sprites: {
             idle:{
@@ -161,13 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function attackCollision(player1, player2){
         return(
-            player1.attackRect.position.x + player1.attackRect.width >= player2.position.x
+            player1.attackRect.position.x + player1.attackRect.width >= player2.attackRect.position.x
             && 
-            player1.attackRect.position.x <= player2.position.x + player2.width
+            player1.attackRect.position.x <= player2.attackRect.position.x + player2.attackRect.width
             && 
-            player1.attackRect.position.y + player1.attackRect.height >= player2.position.y
+            player1.attackRect.position.y + player1.attackRect.height >= player2.attackRect.position.y
             &&
-            player1.attackRect.position.y <= player2.position.y + player2.height
+            player1.attackRect.position.y <= player2.attackRect.position.y + player2.attackRect.height
         )
     }
 

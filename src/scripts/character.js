@@ -90,7 +90,17 @@ export default class Character extends Sprite {
         this.context.fillRect(this.attackRect.position.x, this.attackRect.position.y,
             this.attackRect.width, this.attackRect.height);
         
-        this.position.x += this.velocity.x;
+         if(this.position.x < 0){
+            this.position.x = 0
+        }
+        else if(this.position.x > this.canvas.width){
+            this.position.x = this.canvas.width
+        }else{
+            this.position.x += this.velocity.x;
+        }
+        console.log("PRINTING POS X", this.position.x)
+            
+            
         // if character position becomes < 0, this means it's in the ceiling. stop code from reducing the value 
         //of y anymore
         if(this.position.y < 0){ 
