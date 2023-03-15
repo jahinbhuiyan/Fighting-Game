@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
     <style>
       *{
         box-sizing: border-box;
+        font-family: 'Press Start 2P', cursive;
       }
     </style>
     <title>Fight Game</title>
@@ -16,7 +25,17 @@
   <div id="main"></div>
 
   <body>
-    <div style="position: relative; display:inline-block;">
+
+    <nav>
+      <ul>
+        
+        <li><a href="https://www.linkedin.com/in/jahin-bhuiyan-25b625199/"><i class="fa-brands fa-linkedin fa-3x"></i></a></li>
+        <li><a href="https://github.com/jahinbhuiyan"><i class="fa-brands fa-github fa-3x"></i></a></li>
+      </ul>
+    </nav>
+
+
+    <div style="position: relative; display:flex; align-items: column;">
       
       <div style="position: absolute; display: flex; width: 100%; align-items: center; padding: 20px;">
        
@@ -42,6 +61,11 @@
           <div></div>
 
       </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" 
+      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" 
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      
       <script src="./dist/main.js"></script>
       <div id="textresult"style="position: absolute; color:white; display: none; align-items: center; justify-content: center;
       top: 0; right: 0; bottom: 0; left: 0;

@@ -1,4 +1,104 @@
-/*!*************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
-  \*************************************************************************************************************************************/
+header {
+  position: relative; /* Set the header position to fixed */
+  top: 100; /* Align the header to the top of the viewport */
+  width: 100%; /* Set the header width to 100% of the viewport */
+  z-index: 1; /* Set the header z-index to be above other elements */
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+}
 
+body {
+  margin-top: 60px; /* Add margin-top to body to make space for the fixed header */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../assets/game_background_3/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  animation: slideBg 10s linear infinite; /* Add the animation */
+}
+
+body::before {
+  content: "Fight Game";
+  display: block;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
+  color: #fff;
+  animation: coolText 1s ease-in-out infinite;
+}
+
+@keyframes coolText {
+  0% {
+    text-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
+  }
+  50% {
+    text-shadow: -1px -1px 1px #000, 1px 1px 1px #fff;
+  }
+  100% {
+    text-shadow: 1px -1px 1px #000, -1px 1px 1px #fff;
+  }
+}
+
+canvas {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideBg {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s ease-in-out;
+}
+
+nav a:hover {
+  color: #c0c0c0;
+}

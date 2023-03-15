@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         scale: 2.5,
         offset: {
             x: 215,
-            y: 157
+            y: 110
         },
         sprites: {
             idle:{
@@ -148,10 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         attackBox: {
             offset:{
-                x: 0,
+                x: -100,
                 y: 0
             },
-            width: 200,
+            width: 100,
             height: 50
         }
         
@@ -232,11 +232,13 @@ document.addEventListener("DOMContentLoaded", () => {
         background.update();
         player.update();
         
-        // setInterval(()=>{
+        setInterval(()=>{
             
-        //     enemy.velocity.x =  -1
-        //     enemy.attack()
-        // },5000)
+            enemy.velocity.x =  -0.5
+            enemy.attack()
+        },5000)
+
+        
         
         enemy.update();
         player.velocity.x = 0;
@@ -273,7 +275,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 // enemy.health -= 5;
                 enemy.takeHit()
                 player.attacking = false;
-                document.querySelector('#enemyHealth').style.width = enemy.health + '%';
+                // document.querySelector('#enemyHealth').style.width = enemy.health + '%';
+                gsap.to('#enemyHealth', {
+                    width: enemy.health + '%'
+                })
         }
 
         if( attackCollision(
@@ -287,7 +292,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 player.takeHit()
                 enemy.attacking = false;
                 // player.health -= 1; 
-                document.querySelector('#playerHealth').style.width = player.health + '%';
+                // document.querySelector('#playerHealth').style.width = player.health + '%';
+                gsap.to('#playerHealth', {
+                    width: player.health + '%'
+                })
         }
 
         // end game logic
@@ -341,11 +349,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
-// randomize attakcs
-// invert image
-// negate attack range (make enemy attack negative)
-// enemy sprite edit
-// build AI
+// randomize attakcs ??????
+// invert image   -----------DONE
+// negate attack range (make enemy attack negative)  ----- DONE
+// enemy sprite edit ----- DONE
+// build AI ???????
 
 
 
