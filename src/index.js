@@ -60,6 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 imageSrc: 'assets/Martial/Sprites/Attack1.png',
                 framesMax: 6,
                 image: new Image()
+            },
+            takeHit:{
+                imageSrc: 'assets/Martial/Sprites/TakeHit.png',
+                framesMax: 4,
+                image: new Image()
+            },
+            death:{
+                imageSrc: 'assets/Martial/Sprites/Death.png',
+                framesMax: 6,
+                image: new Image()
             }
         },
         attackBox: {
@@ -120,6 +130,16 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             attack1:{
                 imageSrc: 'assets/King/Sprites/Attack1.png',
+                framesMax: 6,
+                image: new Image()
+            },
+            takeHit:{
+                imageSrc: 'assets/King/Sprites/TakeHit.png',
+                framesMax: 4,
+                image: new Image()
+            },
+            death:{
+                imageSrc: 'assets/King/Sprites/Death.png',
                 framesMax: 6,
                 image: new Image()
             }
@@ -212,11 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
         background.update();
         player.update();
         
-        setInterval(()=>{
-            
-            enemy.velocity.x =  -1
-            enemy.attack()
-        },5000)
+        // a
         
         enemy.update();
         player.velocity.x = 0;
@@ -249,8 +265,10 @@ document.addEventListener("DOMContentLoaded", () => {
         )
             &&
             player.attacking){
+                // enemy.switchSprites('takeHit')
+                // enemy.health -= 5;
+                enemy.takeHit()
                 player.attacking = false;
-                enemy.health -= 5;
                 document.querySelector('#enemyHealth').style.width = enemy.health + '%';
         }
 
@@ -260,8 +278,11 @@ document.addEventListener("DOMContentLoaded", () => {
         )
             &&
             enemy.attacking){
+                // player.switchSprites('takeHit')
+                // player.health -= 5;
+                player.takeHit()
                 enemy.attacking = false;
-                player.health -= 1; 
+                // player.health -= 1; 
                 document.querySelector('#playerHealth').style.width = player.health + '%';
         }
 
