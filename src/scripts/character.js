@@ -90,8 +90,8 @@ export default class Character extends Sprite {
         
         this.attackRect.position.x = this.position.x + this.attackRect.offset.x;
         this.attackRect.position.y = this.position.y
-        this.context.fillRect(this.attackRect.position.x, this.attackRect.position.y,
-             this.attackRect.width, this.attackRect.height);  ///////////////////////////////////////////
+        //this.context.fillRect(this.attackRect.position.x, this.attackRect.position.y,
+          //   this.attackRect.width, this.attackRect.height);  ///////////////////////////////////////////
         
          if(this.position.x < 0){
             this.position.x = 0
