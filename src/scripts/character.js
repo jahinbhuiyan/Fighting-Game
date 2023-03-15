@@ -17,7 +17,8 @@ export default class Character extends Sprite {
         imageSrc, 
         scale = 1, 
         framesMax = 1, 
-        offset = {x:0, y:0}
+        offset = {x:0, y:0},
+        sprites
     
     }) {
 
@@ -54,6 +55,12 @@ export default class Character extends Sprite {
         this.framesCurrent = 0
         this.framesElapsed = 0
         this.framesHold = 5
+        this.sprites = sprites
+
+        for(const sprite in this.sprites){
+            sprites[sprite].image = new Image()
+            sprites[sprite].image.src = sprites[sprite].imageSrc
+        }
         
     }
 
@@ -100,7 +107,7 @@ export default class Character extends Sprite {
 
     attack(){
         this.attacking = true;
-        setInterval(() => {
+        setTimeout(() => {
             this.attacking = false;
         }, 1000)
     }

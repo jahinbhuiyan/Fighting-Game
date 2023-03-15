@@ -29,12 +29,29 @@ document.addEventListener("DOMContentLoaded", () => {
             x:0,
             y:0
         },
-        imageSrc: 'assets/Knight/Sprites/Idle.png',
-        framesMax: 11,
-        scale: 2,
+        imageSrc: 'assets/Martial/Sprites/Idle.png',
+        framesMax: 8,
+        scale: 2.5,
         offset: {
-            x: 150,
-            y: 80
+            x: 215,
+            y: 157
+        },
+        sprites: {
+            idle:{
+                imageSrc: 'assets/Martial/Sprites/Idle.png',
+                framesMax: 8
+            },
+            run:{
+                imageSrc: 'assets/Martial/Sprites/Run.png',
+                framesMax: 8,
+                image: new Image()
+            },
+            jump:{
+                imageSrc: 'assets/Martial/Sprites/Jump.png',
+                framesMax: 2,
+                image: new Image()
+            }
+
         }
     });
     console.log(player)
@@ -57,12 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
             x:-50,
             y:0
         },
-        imageSrc: 'assets/Knight/Sprites/Idle.png',
-        framesMax: 11,
-        scale: 2,
+        imageSrc: 'assets/Martial/Sprites/Idle.png',               /////////////
+        framesMax: 8,
+        scale: 2.5,
         offset: {
-            x: 150,
-            y: 80
+            x: 215,
+            y: 157
         }
         
     });
@@ -174,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
             &&
             enemy.attacking){
                 enemy.attacking = false;
-                player.health -= 5;  //**************** */
+                player.health -= 5; 
                 document.querySelector('#playerHealth').style.width = player.health + '%';
         }
 
@@ -192,9 +209,11 @@ document.addEventListener("DOMContentLoaded", () => {
             case 'd': 
                 keys.d.pressed = true // when i press d movement function picks it up bcs it is running 
                 // every unit of time. 
+                player.image = player.sprites.run.image
             break
             case 'a': 
                 keys.a.pressed = true
+                player.image = player.sprites.run.image
             break
             case 'w':
                 keys.w.pressed = true
@@ -221,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 keys.w.pressed = false
                 console.log("released",event.key);
         }
+        player.image = player.sprites.idle.image
         
     })
 
