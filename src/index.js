@@ -162,14 +162,22 @@ document.addEventListener("DOMContentLoaded", () => {
         
         
         player.velocity.x = 0;
+
+        player.switchSprites('idle')
         if(keys.a.pressed ){
             player.velocity.x = -5
+            player.switchSprites('run')
         }else if(keys.d.pressed ){
             player.velocity.x = 5
+            player.switchSprites('run')
         }else if(keys.w.pressed ){
             // if(player.position.y > 0){
                 player.velocity.y = -10
             // }
+        }
+
+        if(player.velocity.y < 0){
+            player.switchSprites('jump')
         }
 
         //collision detection
@@ -209,11 +217,11 @@ document.addEventListener("DOMContentLoaded", () => {
             case 'd': 
                 keys.d.pressed = true // when i press d movement function picks it up bcs it is running 
                 // every unit of time. 
-                player.image = player.sprites.run.image
+                // player.image = player.sprites.run.image
             break
             case 'a': 
                 keys.a.pressed = true
-                player.image = player.sprites.run.image
+                // player.image = player.sprites.run.image
             break
             case 'w':
                 keys.w.pressed = true
@@ -240,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 keys.w.pressed = false
                 console.log("released",event.key);
         }
-        player.image = player.sprites.idle.image
+        
         
     })
 

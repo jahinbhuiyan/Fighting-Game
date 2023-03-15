@@ -112,6 +112,27 @@ export default class Character extends Sprite {
         }, 1000)
     }
 
+    switchSprites(sprite){
+        switch(sprite){
+            case 'idle':
+                if(this.image !== this.sprites.idle.image){
+                this.image = this.sprites.idle.image
+                this.framesMax = this.sprites.idle.framesMax
+            }
+            break;
+            case 'run':
+                if(this.image !== this.sprites.run.image){
+                    this.image = this.sprites.run.image
+                    this.framesMax = this.sprites.run.framesMax
+                }
+            break;
+            case 'jump':
+                if(this.image !== this.sprites.jump.image){
+                this.image = this.sprites.jump.image
+                this.framesMax = this.sprites.jump.framesMax}
+            break;
+        }
+    }
     
 }
 
