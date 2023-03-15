@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 x: 0,
                 y: 0
             },
-            width: 100,
+            width: 200,
             height: 50
         }
     });
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 x: 0,
                 y: 0
             },
-            width: 100,
+            width: 200,
             height: 50
         }
         
@@ -213,8 +213,10 @@ document.addEventListener("DOMContentLoaded", () => {
         player.update();
         
         setInterval(()=>{
+            
             enemy.velocity.x =  -1
-        },1000)
+            enemy.attack()
+        },5000)
         
         enemy.update();
         player.velocity.x = 0;
@@ -259,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
             &&
             enemy.attacking){
                 enemy.attacking = false;
-                player.health -= 5; 
+                player.health -= 1; 
                 document.querySelector('#playerHealth').style.width = player.health + '%';
         }
 
@@ -313,6 +315,12 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
 })
+
+// randomize attakcs
+// invert image
+// negate attack range (make enemy attack negative)
+// enemy sprite edit
+// build AI
 
 
 
