@@ -232,7 +232,11 @@ document.addEventListener("DOMContentLoaded", () => {
         background.update();
         player.update();
         
-        // a
+        // setInterval(()=>{
+            
+        //     enemy.velocity.x =  -1
+        //     enemy.attack()
+        // },5000)
         
         enemy.update();
         player.velocity.x = 0;
