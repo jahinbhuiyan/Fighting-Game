@@ -50,6 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 imageSrc: 'assets/Martial/Sprites/Jump.png',
                 framesMax: 2,
                 image: new Image()
+            },
+            fall:{
+                imageSrc: 'assets/Martial/Sprites/Fall.png',
+                framesMax: 2,
+                image: new Image()
+            },
+            attack1:{
+                imageSrc: 'assets/Martial/Sprites/Attack1.png',
+                framesMax: 6,
+                image: new Image()
             }
 
         }
@@ -80,6 +90,33 @@ document.addEventListener("DOMContentLoaded", () => {
         offset: {
             x: 215,
             y: 157
+        },
+        sprites: {
+            idle:{
+                imageSrc: 'assets/Martial/Sprites/Idle.png',
+                framesMax: 8
+            },
+            run:{
+                imageSrc: 'assets/Martial/Sprites/Run.png',
+                framesMax: 8,
+                image: new Image()
+            },
+            jump:{
+                imageSrc: 'assets/Martial/Sprites/Jump.png',
+                framesMax: 2,
+                image: new Image()
+            },
+            fall:{
+                imageSrc: 'assets/Martial/Sprites/Fall.png',
+                framesMax: 2,
+                image: new Image()
+            },
+            attack1:{
+                imageSrc: 'assets/Martial/Sprites/Attack1.png',
+                framesMax: 6,
+                image: new Image()
+            }
+
         }
         
     });
@@ -163,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         player.velocity.x = 0;
 
-        player.switchSprites('idle')
+        
         if(keys.a.pressed ){
             player.velocity.x = -5
             player.switchSprites('run')
@@ -174,10 +211,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // if(player.position.y > 0){
                 player.velocity.y = -10
             // }
+        }else{
+            player.switchSprites('idle')
         }
 
         if(player.velocity.y < 0){
             player.switchSprites('jump')
+        } else if(player.velocity.y > 0){
+            player.switchSprites('fall')
         }
 
         //collision detection
