@@ -18,7 +18,10 @@ export default class Character extends Sprite {
         scale = 1, 
         framesMax = 1, 
         offset = {x:0, y:0},
-        sprites
+        sprites,
+        attackBox = {
+            offset:{}, width: undefined, height: undefined
+        }
     
     }) {
 
@@ -46,9 +49,9 @@ export default class Character extends Sprite {
                 x: this.position.x,
                 y: this.position.y
             },
-            offset,
-            width: 100,
-            height: 50
+            offset: attackBox.offset,
+            width: attackBox.width,
+            height: attackBox.height
         }
         this.attacking;
         this.health = 100;
@@ -84,7 +87,8 @@ export default class Character extends Sprite {
         
         this.attackRect.position.x = this.position.x + this.attackRect.offset.x;
         this.attackRect.position.y = this.position.y
-        
+        this.context.fillRect(this.attackRect.position.x, this.attackRect.position.y,
+            this.attackRect.width, this.attackRect.height);
         
         this.position.x += this.velocity.x;
         // if character position becomes < 0, this means it's in the ceiling. stop code from reducing the value 

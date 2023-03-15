@@ -61,7 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 framesMax: 6,
                 image: new Image()
             }
-
+        },
+        attackBox: {
+            offset:{
+                x: 0,
+                y: 0
+            },
+            width: 100,
+            height: 50
         }
     });
     console.log(player)
@@ -84,39 +91,48 @@ document.addEventListener("DOMContentLoaded", () => {
             x:-50,
             y:0
         },
-        imageSrc: 'assets/Martial/Sprites/Idle.png',               /////////////
+        imageSrc: 'assets/King/Sprites/Idle.png',               /////////////
         framesMax: 8,
         scale: 2.5,
         offset: {
-            x: 215,
-            y: 157
+            x: -215,
+            y: 115
         },
         sprites: {
             idle:{
-                imageSrc: 'assets/Martial/Sprites/Idle.png',
+                imageSrc: 'assets/King/Sprites/Idle.png',
                 framesMax: 8
             },
             run:{
-                imageSrc: 'assets/Martial/Sprites/Run.png',
+                imageSrc: 'assets/King/Sprites/Run.png',
                 framesMax: 8,
                 image: new Image()
             },
             jump:{
-                imageSrc: 'assets/Martial/Sprites/Jump.png',
+                imageSrc: 'assets/King/Sprites/Jump.png',
                 framesMax: 2,
                 image: new Image()
             },
             fall:{
-                imageSrc: 'assets/Martial/Sprites/Fall.png',
+                imageSrc: 'assets/King/Sprites/Fall.png',
                 framesMax: 2,
                 image: new Image()
             },
             attack1:{
-                imageSrc: 'assets/Martial/Sprites/Attack1.png',
+                imageSrc: 'assets/King/Sprites/Attack1.png',
                 framesMax: 6,
                 image: new Image()
             }
 
+        },
+        
+        attackBox: {
+            offset:{
+                x: 0,
+                y: 0
+            },
+            width: 100,
+            height: 50
         }
         
     });
@@ -195,9 +211,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.requestAnimationFrame(movement) // this calls movement function on an endless loop
         background.update();
         player.update();
+        
+        setInterval(()=>{
+            enemy.velocity.x =  -1
+        },1000)
+        
         enemy.update();
-        
-        
         player.velocity.x = 0;
 
         
