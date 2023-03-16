@@ -101,7 +101,7 @@ export default class Character extends Sprite {
         }else{
             this.position.x += this.velocity.x;
         }
-        console.log("PRINTING POS X", this.position.x)
+        //console.log("PRINTING POS X", this.position.x)
             
             
         // if character position becomes < 0, this means it's in the ceiling. stop code from reducing the value 
@@ -132,12 +132,14 @@ export default class Character extends Sprite {
 
     takeHit(){
         this.switchSprites('takeHit')
-        this.health -= 5;
+        console.log("here")
+        this.health -= 3;
 
         if(this.health <= 0){
             this.switchSprites('death')
-        }else{
-            this.switchSprites('takeHit')
+        }
+        else{
+            // this.switchSprites('takeHit')
         }
     }
 
@@ -145,7 +147,7 @@ export default class Character extends Sprite {
         // if dead we won't do anymore sprites
         if(this.image === this.sprites.death.image) {
             if(this.framesCurrent === this.sprites.death.framesMax - 1)
-            this.dead = true
+                this.dead = true
             return
         }
 

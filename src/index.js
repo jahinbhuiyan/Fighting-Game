@@ -44,12 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
             run:{
                 imageSrc: 'assets/Martial/Sprites/Run.png',
                 framesMax: 8,
-                image: new Image()
+                //image: new Image()
             },
             jump:{
                 imageSrc: 'assets/Martial/Sprites/Jump.png',
                 framesMax: 2,
-                image: new Image()
+                //image: new Image()
             },
             fall:{
                 imageSrc: 'assets/Martial/Sprites/Fall.png',
@@ -59,17 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
             attack1:{
                 imageSrc: 'assets/Martial/Sprites/Attack1.png',
                 framesMax: 6,
-                image: new Image()
+                //image: new Image()
             },
             takeHit:{
                 imageSrc: 'assets/Martial/Sprites/TakeHit.png',
                 framesMax: 4,
-                image: new Image()
+                //image: new Image()
             },
             death:{
                 imageSrc: 'assets/Martial/Sprites/Death.png',
                 framesMax: 6,
-                image: new Image()
+                //image: new Image()
             }
         },
         attackBox: {
@@ -231,16 +231,18 @@ document.addEventListener("DOMContentLoaded", () => {
         window.requestAnimationFrame(movement) // this calls movement function on an endless loop
         background.update();
         player.update();
+        enemy.update();
         
+        console.log("playerstatus ", player.attacking)
+
         setInterval(()=>{
             
-            enemy.velocity.x =  -0.5
-            enemy.attack()
+            //enemy.velocity.x =  -0.5
+            // enemy.attack()
         },5000)
 
         
         
-        enemy.update();
         player.velocity.x = 0;
 
         
@@ -274,11 +276,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 // enemy.switchSprites('takeHit')
                 // enemy.health -= 5;
                 enemy.takeHit()
+                console.log("enemyHP ",enemy.health)
                 player.attacking = false;
                 // document.querySelector('#enemyHealth').style.width = enemy.health + '%';
                 gsap.to('#enemyHealth', {
                     width: enemy.health + '%'
                 })
+    
         }
 
         if( attackCollision(
@@ -291,6 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // player.health -= 5;
                 player.takeHit()
                 enemy.attacking = false;
+                console.log("playerHP ", player.health)
                 // player.health -= 1; 
                 // document.querySelector('#playerHealth').style.width = player.health + '%';
                 gsap.to('#playerHealth', {
