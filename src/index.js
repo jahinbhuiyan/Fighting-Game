@@ -180,6 +180,17 @@ document.addEventListener("DOMContentLoaded", () => {
    
 
     function attackCollision(player1, player2){
+       console.log(
+        player1.attackRect.position.x + player1.attackRect.width >= player2.attackRect.position.x
+            && 
+            player1.attackRect.position.x <= player2.attackRect.position.x + player2.attackRect.width
+            && 
+            player1.attackRect.position.y + player1.attackRect.height >= player2.attackRect.position.y
+            &&
+            player1.attackRect.position.y <= player2.attackRect.position.y + player2.attackRect.height
+            
+       )
+        
         return(
             player1.attackRect.position.x + player1.attackRect.width >= player2.attackRect.position.x
             && 
@@ -188,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
             player1.attackRect.position.y + player1.attackRect.height >= player2.attackRect.position.y
             &&
             player1.attackRect.position.y <= player2.attackRect.position.y + player2.attackRect.height
+            
         )
     }
 
@@ -236,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
 
         if(enemy.health <= 0){
-
+            enemy.velocity.x = 0
             console.log("enemy dead ")
             enemy.switchSprites('death')
             enemy.imageSrc =  'assets/King/Sprites/Death.png'
@@ -311,8 +323,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if( attackCollision(
-            enemy,
-            player
+            player,
+            enemy
         )
             &&
             enemy.attacking){
@@ -345,8 +357,13 @@ document.addEventListener("DOMContentLoaded", () => {
           
           const rndInt = randomIntFromInterval(-1, 1)
           console.log(rndInt)
-        enemy.velocity.x =  rndInt
-        enemy.attack()
+        if(enemy.health > 0){
+            enemy.velocity.x =  rndInt
+            enemy.attack()
+        }else{
+            enemy.velocity.x = 0
+        }
+        
     },1000)
 
 
