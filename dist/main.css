@@ -17,7 +17,7 @@ body {
   align-items: center;
   height: 100vh;
   background-image: url('../assets/game_background_3/background.png');
-  /* background-size: cover;  */
+  background-size: 110vw; 
   background-repeat: no-repeat;
   background-position: center center;
   animation: slideBg 10s linear infinite; /* Add the animation */
