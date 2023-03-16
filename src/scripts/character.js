@@ -135,7 +135,7 @@ export default class Character extends Sprite {
     takeHit(){
         this.switchSprites('takeHit')
         
-        this.health -= 8;
+        this.health -= 5;
 
         if(this.health <= 0){
             this.switchSprites('death')
