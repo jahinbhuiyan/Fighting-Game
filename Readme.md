@@ -2,9 +2,18 @@
 
 [LIVE LINK](https://jahinbhuiyan.github.io/JavaScript-Game/)
 
+
+![alt text](assets/Gameplay_1.png)
+
+![alt text](assets/Gameplay_2.png)
+
+
+
+## Background and Overview ##
+
 King Slayer is a player vs computer game, where the user can take control of a character and face an AI character. The main idea of the game is to land significant strikes to your opponent, and this will in turn reduce their health bar. When their health bar reaches 0 they will lose the game. Receiving strikes from the opponent will have the same effect on the user's health bar. The game finishes, when one of the characters health reaches 0. The other way the game can finish is when the countdown timer reaches 0. The countdown timer will start at 45 seconds. In the game the user has absolute control over their character. You can use your character to move left, right and jump . You can also attack with a selected key
 
-![alt text](screenshot.png)
+![alt text](assets/screenshot.png)
 
 
 ## Technologies Used ##
