@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // creatae a new player
 
-    const player = new Character(canvas,context, {    // creating the position and velocity as a key: value pair
+    const player = new Character("player", canvas,context, {    // creating the position and velocity as a key: value pair
         position:{
             x: 0, 
             y: 150 // so that we start at the bottom of the frame
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
     
-    const enemy = new Character(canvas, context, {
+    const enemy = new Character("enemy", canvas, context, {
         position:{
             x: 700, 
             y: 150
@@ -148,10 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         attackBox: {
             offset:{
-                x: -100,
+                x: -200,
                 y: 0
             },
-            width: 100,
+            width: 200,
             height: 50
         }
         
@@ -232,33 +232,57 @@ document.addEventListener("DOMContentLoaded", () => {
         background.update();
         player.update();
         enemy.update();
-        
-        console.log("playerstatus ", player.attacking)
 
-        setInterval(()=>{
-            
-            //enemy.velocity.x =  -0.5
-            // enemy.attack()
-        },5000)
+        
+
+        if(enemy.health <= 0){
+
+            console.log("enemy dead ")
+            enemy.switchSprites('death')
+            enemy.imageSrc =  'assets/King/Sprites/Death.png'
+            enemy.image = enemy.sprites.death.image
+            enemy.framesMax = enemy.sprites.death.framesMax
+            enemy.framesCurrent = 0
+        }
+        else{
+            if(enemy.velocity.x != 0){
+                enemy.switchSprites('run')
+            }else{
+
+                enemy.switchSprites('idle')
+            }
+
+        }
 
         
         
         player.velocity.x = 0;
 
-        
-        if(keys.a.pressed ){
-            player.velocity.x = -5
-            player.switchSprites('run')
-        }else if(keys.d.pressed ){
-            player.velocity.x = 5
-            player.switchSprites('run')
-        }else if(keys.w.pressed ){
-            // if(player.position.y > 0){
-                player.velocity.y = -10
-            // }
-        }else{
-            player.switchSprites('idle')
+        if(player.health <= 0){
+            console.log("player dead" )
+            player.switchSprites('death')
+            enemy.switchSprites('idle')
         }
+        else{
+            if(keys.a.pressed ){
+                player.velocity.x = -5
+                player.switchSprites('run')
+            }else if(keys.d.pressed ){
+                player.velocity.x = 5
+                player.switchSprites('run')
+            }else if(keys.w.pressed ){
+                // if(player.position.y > 0){
+                    player.velocity.y = -10
+                // }
+            }
+            else{
+                
+                player.switchSprites('idle')
+            }
+        }
+
+
+        
 
         if(player.velocity.y < 0){
             player.switchSprites('jump')
@@ -276,6 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // enemy.switchSprites('takeHit')
                 // enemy.health -= 5;
                 enemy.takeHit()
+                
                 console.log("enemyHP ",enemy.health)
                 player.attacking = false;
                 // document.querySelector('#enemyHealth').style.width = enemy.health + '%';
@@ -310,6 +335,19 @@ document.addEventListener("DOMContentLoaded", () => {
     
     }
     movement();
+
+    setInterval(()=>{
+            
+            
+        function randomIntFromInterval(min, max) { // min and max included 
+            return Math.floor(Math.random() * (max - min + 1) + min)
+          }
+          
+          const rndInt = randomIntFromInterval(-1, 1)
+          console.log(rndInt)
+        enemy.velocity.x =  rndInt
+        enemy.attack()
+    },1000)
 
 
     window.addEventListener('keydown', (event) =>{   //keydown is a key that allows for recognition of keyboard inputs on the console

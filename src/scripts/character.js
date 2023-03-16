@@ -8,6 +8,7 @@ export default class Character extends Sprite {
     // add canvas and context as arguments for constructor as they were created in a different class file//
 
     constructor(
+        name,
         canvas,
         context,
         {position, 
@@ -60,6 +61,7 @@ export default class Character extends Sprite {
         this.framesHold = 5
         this.sprites = sprites
         this.dead = false
+        this.name = name
 
         for(const sprite in this.sprites){
             sprites[sprite].image = new Image()
@@ -78,7 +80,7 @@ export default class Character extends Sprite {
             this.framesElapsed++
 
             if(this.framesElapsed % this.framesHold === 0){
-        
+                
                 if(this.framesCurrent < this.framesMax - 1){
                     this.framesCurrent++
                 } 
@@ -132,40 +134,57 @@ export default class Character extends Sprite {
 
     takeHit(){
         this.switchSprites('takeHit')
-        console.log("here")
-        this.health -= 3;
+        
+        this.health -= 8;
 
         if(this.health <= 0){
             this.switchSprites('death')
         }
         else{
-            // this.switchSprites('takeHit')
+            this.switchSprites('takeHit')
         }
     }
 
     switchSprites(sprite){
         // if dead we won't do anymore sprites
+
+        // if(this.name == "player"){
+        //     console.log("players framCurrent ", this.framesCurrent)
+        // }
+        // if(this.name == "enemy"){
+        //     console.log("enemy framCurrent ", this.framesCurrent)
+        // }
+
         if(this.image === this.sprites.death.image) {
             if(this.framesCurrent === this.sprites.death.framesMax - 1)
                 this.dead = true
+                this.image = this.sprites.death.image
+                console.log("DEAD")
             return
         }
+        
 
         // overriding all other animations with attack animation
         if(this.image === this.sprites.attack1.image && 
-           this.framesCurrent < this.sprites.attack1.framesMax -1) return 
+           this.framesCurrent < this.sprites.attack1.framesMax -1) {
+            return} 
 
         // overrride when fighter gets hit
 
         if(this.image === this.sprites.takeHit.image && 
-            this.framesCurrent < this.sprites.takeHit.framesMax -1) return 
+            this.framesCurrent < this.sprites.takeHit.framesMax -1) {
+                return} 
 
         switch(sprite){
             case 'idle':
                 if(this.image !== this.sprites.idle.image){
+                    if(this.name == "player"){
+                        console.log(" set to idle")
+                    }
                 this.image = this.sprites.idle.image
                 this.framesMax = this.sprites.idle.framesMax
                 this.framesCurrent = 0
+                
             }
             break;
             case 'run':
